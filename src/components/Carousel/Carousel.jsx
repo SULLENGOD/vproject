@@ -2,6 +2,7 @@ import React from "react";
 import "./Carousel.css";
 import sullen from "./img/sullen.png";
 // import pent from "./img/pent.jpg";
+//prueba *
 
 function Carousel() {
   
