@@ -1,0 +1,10 @@
+body {
+    background-color: black;
+}
+.card {
+    background-color: black;
+    color: white;
+}
+.btn:hover {
+    color: darkred;
+}
