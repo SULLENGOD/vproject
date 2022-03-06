@@ -1,0 +1,8 @@
+.offcanvas {
+    border-radius: 1%;
+    background-color: rgb(50, 50, 50, 0.6);
+
+}
+#offcanvasRightLabel {
+    color: white;
+}
