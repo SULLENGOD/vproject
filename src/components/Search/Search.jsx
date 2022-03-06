@@ -1,4 +1,5 @@
 import React from "react";
+import './Search.css'
 
 const Search = () => {
   return (
@@ -25,6 +26,7 @@ const Search = () => {
               <div className="col-auto">
                 <input
                   type="text"
+                  id="searchInput"
                   placeholder="Artist"
                   className="form-control"
                 />
@@ -35,9 +37,10 @@ const Search = () => {
                 </button>
                 <button
                   type="button"
-                  className="btn btn-outline-secondary text-reset"
+                  className="btn btn-outline-danger text-reset"
                   data-bs-dismiss="offcanvas"
                   aria-label="Close"
+                  id="closeBtn"
                 >
                   Close
                 </button>
