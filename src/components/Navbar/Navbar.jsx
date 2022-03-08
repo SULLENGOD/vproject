@@ -1,6 +1,7 @@
 import React from "react";
 import { Login } from "../Login/Login";
 import { Search } from "../../components/Search/Search";
+import { SingIn } from "../SingIn/SingIn"
 import "./Navbar.css";
 
 function Navbar() {
@@ -30,6 +31,8 @@ function Navbar() {
               <li className="nav-item d-flex">
                 <Login />
               </li>
+              <li className="nav-item d-flex">
+                <SingIn /></li>
             </ul>
           </div>
         </div>
