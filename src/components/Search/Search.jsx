@@ -5,7 +5,7 @@ const Search = () => {
   return (
     <>
       <button
-        class="btn btn-dark"
+        className="btn btn-dark"
         type="button"
         data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasTop"

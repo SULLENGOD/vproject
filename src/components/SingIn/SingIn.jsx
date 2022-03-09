@@ -1,38 +1,37 @@
-import { React, useState} from "react";
+import { React, useState } from "react";
 import { useForm } from "react-hook-form";
 import { createUserApi } from "../../Api/Apis";
 import "./SingIn.css";
 
 const SingIn = () => {
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const [user , setUser] = useState({
+  const [user, setUser] = useState({
     name: "",
     last_name: "",
     email: "",
     userName: "",
-    pass: ""
+    pass: "",
   });
-  
+
   let singIn = async (payload) => {
     const createUser = {
       name: payload.name,
       last_name: payload.last_name,
       email: payload.email,
       userName: payload.userName,
-      pass: payload.pass
+      pass: payload.pass,
     };
     // hasta aqui nada se rompe.
-    setUser(createUser)
+    setUser(createUser);
     // aun sin errores.
     let response = await createUserApi(createUser); //Sin error.
-    return response
-  }
+    return response;
+  };
 
   return (
     <>
@@ -48,7 +47,7 @@ const SingIn = () => {
       <div
         className="modal fade"
         id="exampleModal"
-        tabindex="-1"
+        tabindex={-1}
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
@@ -60,7 +59,7 @@ const SingIn = () => {
               </h5>
               <button
                 type="button"
-                class="btn-close"
+                className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
@@ -70,7 +69,8 @@ const SingIn = () => {
                 <div className="row g-2 mb-3">
                   <div className="col-md">
                     <div className="form-floating">
-                      <input {...register("name")}
+                      <input
+                        {...register("name")}
                         type="text"
                         className="form-control"
                         id="nameFloating"
@@ -81,18 +81,23 @@ const SingIn = () => {
                   </div>
                   <div className="col-md">
                     <div className="form-floating">
-                      <input {...register("last_name")}
+                      <input
+                        {...register("last_name")}
                         type="text"
                         className="form-control"
                         id="nameFloating"
                         placeholder="First Name"
                       />
+                      {errors?.name?.type === "required" && (
+                        <p className="error">Este campo es requerido</p>
+                      )}
                       <label for="nameFloating">Last Name</label>
                     </div>
                   </div>
                 </div>
                 <div className="form-floating mb-3">
-                  <input {...register("email")}
+                  <input
+                    {...register("email")}
                     type="email"
                     className="form-control"
                     id="emailFloating"
@@ -101,7 +106,8 @@ const SingIn = () => {
                   <label for="emailFloating">Email Adress</label>
                 </div>
                 <div className="form-floating mb-3">
-                  <input {...register("userName")}
+                  <input
+                    {...register("userName")}
                     type="text"
                     className="form-control"
                     id="userFloating"
@@ -112,7 +118,8 @@ const SingIn = () => {
                 <div className="row g-2 mb-3">
                   <div className="col-md">
                     <div className="form-floating">
-                      <input {...register("pass")}
+                      <input
+                        {...register("pass")}
                         type="password"
                         className="form-control"
                         id="nameFloating"
@@ -133,10 +140,10 @@ const SingIn = () => {
                     </div>
                   </div>
                 </div>
+                <button type="submit" className="btn btn-primary">
+                  Sing In
+                </button>
               </form>
-              <button type="submit" className="btn btn-primary">
-                Sing In
-              </button>
             </div>
             <div class="modal-footer">
               <button
@@ -146,7 +153,6 @@ const SingIn = () => {
               >
                 Close
               </button>
-             
             </div>
           </div>
         </div>

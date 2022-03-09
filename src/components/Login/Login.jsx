@@ -38,7 +38,7 @@ const Login = () => {
                 id="email"
                 placeholder="DJ@vicio.com"
               />
-              <label htmlFor="." for="floatingInput" id="emailLabel">
+              <label for="floatingInput" id="emailLabel">
                 DJ@vicio.com
               </label>
             </div>
@@ -49,7 +49,7 @@ const Login = () => {
                 id="password"
                 placeholder="Password"
               />
-              <label htmlFor="." for="floatingInput" id="passLabel">
+              <label for="floatingInput" id="passLabel">
                 Password
               </label>
             </div>
