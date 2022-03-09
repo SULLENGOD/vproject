@@ -1,7 +1,39 @@
-import React from "react";
+import { React, useState} from "react";
+import { useForm } from "react-hook-form";
+import { createUserApi } from "../../Api/Apis";
 import "./SingIn.css";
 
 const SingIn = () => {
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const [user , setUser] = useState({
+    name: "",
+    last_name: "",
+    email: "",
+    userName: "",
+    pass: ""
+  });
+  
+  let singIn = async (payload) => {
+    const createUser = {
+      name: payload.name,
+      last_name: payload.last_name,
+      email: payload.email,
+      userName: payload.userName,
+      pass: payload.pass
+    };
+    // hasta aqui nada se rompe.
+    setUser(createUser)
+    // aun sin errores.
+    let response = await createUserApi(createUser); //Sin error.
+    return response
+  }
+
   return (
     <>
       <button
@@ -34,11 +66,11 @@ const SingIn = () => {
               ></button>
             </div>
             <div className="modal-body">
-              <form action="#">
+              <form onSubmit={handleSubmit(singIn)}>
                 <div className="row g-2 mb-3">
                   <div className="col-md">
                     <div className="form-floating">
-                      <input
+                      <input {...register("name")}
                         type="text"
                         className="form-control"
                         id="nameFloating"
@@ -49,7 +81,7 @@ const SingIn = () => {
                   </div>
                   <div className="col-md">
                     <div className="form-floating">
-                      <input
+                      <input {...register("last_name")}
                         type="text"
                         className="form-control"
                         id="nameFloating"
@@ -60,7 +92,7 @@ const SingIn = () => {
                   </div>
                 </div>
                 <div className="form-floating mb-3">
-                  <input
+                  <input {...register("email")}
                     type="email"
                     className="form-control"
                     id="emailFloating"
@@ -69,7 +101,7 @@ const SingIn = () => {
                   <label for="emailFloating">Email Adress</label>
                 </div>
                 <div className="form-floating mb-3">
-                  <input
+                  <input {...register("userName")}
                     type="text"
                     className="form-control"
                     id="userFloating"
@@ -80,7 +112,7 @@ const SingIn = () => {
                 <div className="row g-2 mb-3">
                   <div className="col-md">
                     <div className="form-floating">
-                      <input
+                      <input {...register("pass")}
                         type="password"
                         className="form-control"
                         id="nameFloating"
