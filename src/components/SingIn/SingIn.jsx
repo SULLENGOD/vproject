@@ -19,6 +19,7 @@ const SingIn = () => {
   });
 
   let singIn = async (payload) => {
+    
     const createUser = {
       name: payload.name,
       last_name: payload.last_name,
@@ -26,6 +27,7 @@ const SingIn = () => {
       userName: payload.userName,
       pass: payload.pass,
     };
+    console.log(createUser);
     // hasta aqui nada se rompe.
     setUser(createUser);
     // aun sin errores.
