@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { useForm } from "react-hook-form";
-import { createUserApi } from "../../Api/Apis";
+import { crearUsuarioApi } from "../../Api/Apis";
 import "./SingIn.css";
 
 const SingIn = () => {
@@ -18,21 +18,22 @@ const SingIn = () => {
     pass: "",
   });
 
-  let singIn = async (payload) => {
+  let createUser = async (payload) => {
     
-    const createUser = {
+    const usuarioCreado = {
       name: payload.name,
       last_name: payload.last_name,
       email: payload.email,
       userName: payload.userName,
       pass: payload.pass,
     };
-    console.log(createUser);
+    
     // hasta aqui nada se rompe.
-    setUser(createUser);
+    setUser(usuarioCreado);
     // aun sin errores.
-    let response = await createUserApi(createUser); //Sin error.
+    let response = await crearUsuarioApi(usuarioCreado); //Sin error.
     return response;
+    
   };
 
   return (
@@ -67,7 +68,7 @@ const SingIn = () => {
               ></button>
             </div>
             <div className="modal-body">
-              <form onSubmit={handleSubmit(singIn)}>
+              <form onSubmit={handleSubmit(createUser)}>
                 <div className="row g-2 mb-3">
                   <div className="col-md">
                     <div className="form-floating">
@@ -147,10 +148,10 @@ const SingIn = () => {
                 </button>
               </form>
             </div>
-            <div class="modal-footer">
+            <div className="modal-footer">
               <button
                 type="button"
-                class="btn btn-secondary"
+                className="btn btn-secondary"
                 data-bs-dismiss="modal"
               >
                 Close

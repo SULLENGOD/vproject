@@ -1,7 +1,8 @@
-const singInModel = require('../models/singIn');
+const crearUsuarioModel = require("../models/singIn");
 
-module.exports.singInUser = async (createUser) => {
-    let response = await singInModel.singInUser(createUser);
+module.exports.createUsuario = async (createUser) => {
+    let response = await crearUsuarioModel.createUsuario(createUser);
     console.log(response);
     return response
 }
+

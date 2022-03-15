@@ -1,31 +1,29 @@
-const express =  require('express');
-const cors = require('cors');
-const sequelize = require('./db/connection');
+const express = require('express');
+const cors = require('cors')
 const app = express();
-const PORT = 3001
-require('dotenv').config();
+const sequelize = require('./db/connection')
 
-app.use(express.json());
-app.use(cors)
+//Vistas
 
-const singInUser = require('./views/singIn')
+const crearUsuario =  require('./views/singIn')
 
-app.use((req,res, next)=>{
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Credentials', 'true');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
-  next();
-});
+
+require("dotenv").config()
+
+//Middleware
+app.use(express.json())
+app.use(cors())
+
 
 let serverStart = async () => {
     try {
       await sequelize.authenticate();
-      console.log("My SQL: Online");
+      console.log("MySQL: Online");
   
-      app.listen(PORT, () => {
+      app.listen(3001, () => {
         console.log(
-          "Server: Online PORT: " + PORT
+          "Server: Online",
+          "PORT: 3001"
         );
       });
     } catch (error) {
@@ -35,5 +33,6 @@ let serverStart = async () => {
   
 
 serverStart()
+crearUsuario(app)
 
-singInUser(app)
+

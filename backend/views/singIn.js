@@ -1,9 +1,10 @@
-const singInController = require('../controller/singIn');
+const createUserController = require('../controller/singIn');
 
 module.exports = (app) => {
-    app.post('/register', async(res, req) => {
-        let result = await singInController.singInUser(req.body);
+    app.post('/', async (req, res) => {
+        let result = createUserController.createUsuario(req.body)
         console.log(req.body);
-        res.send(result) 
+        res.send( result )
     })
 }
+
